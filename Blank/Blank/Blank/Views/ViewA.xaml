@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Blank.Views.MainPage"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Blank.Views.ViewA"
              Title="{Binding Title}">
-
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
-        <Button Text="Navigate to Speak Page" Command="{Binding NavigateSpeak}"/>
-    </StackLayout>
 
+        <Label Text="{Binding Title}"/>
+    </StackLayout>
+    
+    
 </ContentPage>

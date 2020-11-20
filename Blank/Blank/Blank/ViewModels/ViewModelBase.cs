@@ -35,7 +35,7 @@ namespace Blank.ViewModels
 
         public virtual void OnNavigatedTo(INavigationParameters parameters)
         {
-
+            Title = parameters.GetValue<string>("title");
         }
 
         public virtual void Destroy()

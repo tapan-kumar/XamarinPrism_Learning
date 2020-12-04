@@ -4,10 +4,14 @@
              x:Class="Contacts.MainPage"
              Title="Contacts">
 
-    <ListView x:Name="list">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ListView x:Name="list" ItemsSource="{Binding Source=MyList}">
         <ListView.ItemTemplate>
             <DataTemplate>
-                <ImageCell Text="{Binding FirstName}" ImageSource="editedkundli.jpg" Detail="{Binding CellNumber}"/>
+                <ImageCell Text="{Binding FirstName}" ImageSource="{Binding DisplayPicture}" Detail="{Binding CellNumber}" />
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Contacts.NewContact"
+             Title="Create contact">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save"/>
+    </ContentPage.ToolbarItems>
+
+    
+    
+    <ContentPage.Content>
+        
+        <StackLayout >
+           
+            <Label Text="First name" FontAttributes="Bold"/>
+            <Entry/>
+            <Label Text="Surname" FontAttributes="Bold"/>
+            <Entry/>
+            <Label Text="Mobile" FontAttributes="Bold"/>
+            <Entry Keyboard="Numeric"/>
+            <Label Text="Email" FontAttributes="Bold"/>
+            <Entry Keyboard="Email"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

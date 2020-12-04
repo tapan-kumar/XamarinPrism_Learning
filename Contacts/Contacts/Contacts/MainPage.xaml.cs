@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Contacts.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,23 +14,14 @@ namespace Contacts
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = new MainpageViewModel();
 
-            var List = new List<Contacts>()
-            {
-                new Contacts
-            {
-                FirstName="Sawan",
-            LastName="Bundelkhandi",
-            CellNumber=9827109369,
-
-            },
-            new Contacts
-            {
-            FirstName="Tapan",
-            LastName="Bundelkhandi",
-            CellNumber=8103943917}};
-            list.ItemsSource = List;
+            
         }
-        
+
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NewContact());
+        }
     }
 }

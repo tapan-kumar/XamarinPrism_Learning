@@ -60,8 +60,10 @@ namespace Contacts.ViewModels
             DisplayPicture="Image2.jpg"
             }
             };
+            
         }
         
-        //list.ItemsSource = List;
+        
+     
     }
 }

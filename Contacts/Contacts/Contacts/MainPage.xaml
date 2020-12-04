@@ -8,7 +8,7 @@
         <ToolbarItem Text="Add" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
 
-    <ListView x:Name="list" ItemsSource="{Binding Source=MyList}">
+    <ListView x:Name="list" ItemsSource="{Binding  MyList}" ItemTapped="list_ItemTapped">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ImageCell Text="{Binding FirstName}" ImageSource="{Binding DisplayPicture}" Detail="{Binding CellNumber}" />

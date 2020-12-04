@@ -14,14 +14,23 @@ namespace Contacts
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new MainpageViewModel();
+            BindingContext =  new MainpageViewModel();
+           
 
-            
+
         }
 
-        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new NewContact());
+             await Navigation.PushAsync(new NewContact());
+        }
+
+    
+
+        private async void list_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var content = e.Item as Contacts;
+            await Navigation.PushAsync(new NewContact(content));
         }
     }
 }

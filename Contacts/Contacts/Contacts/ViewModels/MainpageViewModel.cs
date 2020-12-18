@@ -1,13 +1,18 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace Contacts.ViewModels
 {
     public class MainpageViewModel
     {
+        
+        private SQLiteConnection _connection;
+
         private ObservableCollection<Contacts> myList;
         public ObservableCollection<Contacts> MyList
         {
@@ -16,7 +21,13 @@ namespace Contacts.ViewModels
         }
         public MainpageViewModel()
         {
-            myList = new ObservableCollection<Contacts>()
+            _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
+             _connection.CreateTable<Contacts>();
+            var contactlist =  _connection.Table<Contacts>().ToList();
+            //yList = new ObservableCollection<Contacts>(contactlist);
+
+
+            myList = new ObservableCollection<Contacts>(contactlist)
             {
                 new Contacts
             {
@@ -60,10 +71,17 @@ namespace Contacts.ViewModels
             DisplayPicture="Image2.jpg"
             }
             };
+
             
         }
-        
-        
-     
+
+        //internal async System.Threading.Tasks.Task InitAsync()
+        //{
+       
+
+        //}
+
+
+
     }
 }

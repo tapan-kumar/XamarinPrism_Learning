@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -6,6 +7,8 @@ namespace Contacts
 {
     public partial class App : Application
     {
+        
+        
         public App()
         {
             InitializeComponent();

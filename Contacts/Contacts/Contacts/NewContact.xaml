@@ -4,7 +4,7 @@
              x:Class="Contacts.NewContact"
              Title="Create contact">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save"/>
+        <ToolbarItem Text="Save" Clicked="ToolbarItem_Clicked_1"/>
     </ContentPage.ToolbarItems>
 
     
@@ -14,13 +14,13 @@
         <StackLayout >
            
             <Label Text="First name" FontAttributes="Bold"/>
-            <Entry/>
+            <Entry x:Name="FirstNames" />
             <Label Text="Surname" FontAttributes="Bold"/>
-            <Entry/>
+            <Entry x:Name="LastName"/>
             <Label Text="Mobile" FontAttributes="Bold"/>
-            <Entry Keyboard="Numeric"/>
+            <Entry Keyboard="Numeric" x:Name="CellNumber"/>
             <Label Text="Email" FontAttributes="Bold"/>
-            <Entry Keyboard="Email"/>
+            <Entry Keyboard="Email" x:Name="Email" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

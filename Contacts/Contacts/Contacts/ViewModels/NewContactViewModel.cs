@@ -1,17 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Contacts.ViewModels
 {
      public class NewContactViewModel  : BaseViewModel
     {
+
+        public ICommand SaveCommand;
+
+        public NewContactViewModel()
+        {
+            SaveCommand = new Command(SaveCommandHandler);
+        }
+
+        private void SaveCommandHandler(object obj)
+        {
+            
+
+        }
+
+        
         private string _firstName;
         private int _id;
 
         private string _email;
 
-        private long _cellNumber;
+        private string _cellNumber;
 
         private string _lastName;
 
@@ -41,7 +58,7 @@ namespace Contacts.ViewModels
                 OnPropertyChanged(nameof(LastName));
             }
         }
-        public long CellNumber
+        public string CellNumber
         {
             get
             {

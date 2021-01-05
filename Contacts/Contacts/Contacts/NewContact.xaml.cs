@@ -21,7 +21,7 @@ namespace Contacts
         {
             InitializeComponent();
             //this.content = content;
-            BindingContext = this;
+            BindingContext = new ViewModels.NewContactViewModel();
             
             
         }
@@ -30,12 +30,6 @@ namespace Contacts
 
        
 
-        private void ToolbarItem_Clicked_1(Contacts sender, EventArgs e)
-        {
-           
-            FirstName = FirstNames.Text;
-            reg.LastName = LastName.Text;
-            //reg.CellNumber = CellNumber;
-        }
+       
     }
 }

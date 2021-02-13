@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Relational
+
 using PharmaEasy_API.Domain.Models;
 using System;
 using System.Collections.Generic;

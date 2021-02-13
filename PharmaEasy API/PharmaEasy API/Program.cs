@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using PharmaEasy_API.Persistence.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,14 @@ namespace PharmaEasy_API
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args);
+            var h = host.Build();
+            using (var scope = h.Services.CreateScope())
+            using (var context = scope.ServiceProvider.GetService<AppDbContext>())
+            {
+                context.Database.EnsureCreated();
+            }
+            h.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

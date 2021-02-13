@@ -27,6 +27,7 @@ namespace PharmaEasy_API
             services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("E-Pharmacy"));
             services.AddScoped<IProductRespository, ProductsRepository>();
             services.AddScoped<IProductService, ProductsService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper(typeof(Startup));
         }
 

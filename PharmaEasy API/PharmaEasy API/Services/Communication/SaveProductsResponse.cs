@@ -15,5 +15,15 @@ namespace PharmaEasy_API.Services.Communication
             Products = products;
         }
 
+        public SaveProductsResponse(Products products) : this(true,string.Empty,products)
+        {
+
+        }
+
+        public SaveProductsResponse(string message) : this(false, message, null)
+        {
+
+        }
+
     }
 }

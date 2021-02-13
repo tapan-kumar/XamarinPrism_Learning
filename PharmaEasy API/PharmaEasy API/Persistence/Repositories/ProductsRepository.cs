@@ -17,5 +17,10 @@ namespace PharmaEasy_API.Persistence.Repositories
         {
             return await _context.ProductsSet.ToListAsync();   
         }
+
+       public  async Task AddAsync(Products products)
+        {
+            await _context.ProductsSet.AddAsync(products);
+        }
     }
 }

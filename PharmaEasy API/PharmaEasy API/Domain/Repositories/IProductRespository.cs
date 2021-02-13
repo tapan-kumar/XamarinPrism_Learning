@@ -9,5 +9,7 @@ namespace PharmaEasy_API.Domain.Repositories
    public interface IProductRespository
     {
         Task<IEnumerable<Products>> RepoListAsync();
+
+        Task AddAsync(Products products);
     }
 }

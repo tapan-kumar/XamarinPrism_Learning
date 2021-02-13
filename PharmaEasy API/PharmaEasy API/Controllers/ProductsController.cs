@@ -41,6 +41,15 @@ namespace PharmaEasy_API.Controllers
             }
 
             var postproduct = _mapper.Map<SaveProductResource, Products>(resource);
+
+            var result = await _productService.SaveAsync(postproduct);
+
+            if (!result.Success)
+
+                return BadRequest(result.Message);
+
+            var productResource = _mapper.Map<Products, ProductsResource>(result.Products);
+            return Ok(productResource);
         }
       
 

@@ -11,5 +11,7 @@ namespace PharmaEasy_API.Domain.Services
     {
         Task<IEnumerable<Products>> ProductListAsync();
         Task<SaveProductsResponse> SaveAsync(Products products);
+
+        Task<SaveProductsResponse> UpdateAsync(int id, Products products);
     }
 }

@@ -14,7 +14,7 @@ namespace PharmaEasy_API.Controllers
 
     [ApiController]
     [Route("api/[controller]")]
-    public class ProductsController : Controller
+    public class ProductsController : Controller    
     {
         private readonly IProductService _productService;
         private readonly IMapper _mapper;
@@ -32,7 +32,7 @@ namespace PharmaEasy_API.Controllers
             return resources;
         }
         
-        [HttpPost]
+        [HttpPost]      ////////////////////////////////////////  Creating new data 
         public async Task<IActionResult> PostAsync([FromBody] SaveProductResource resource)
         {
            if(!ModelState.IsValid)
@@ -51,7 +51,23 @@ namespace PharmaEasy_API.Controllers
             var productResource = _mapper.Map<Products, ProductsResource>(result.Products);
             return Ok(productResource);
         }
+
+        [HttpPut("id")]
       
+        public async Task<IActionResult> PutAsync(int id,[FromBody] SaveProductResource resource)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.GetErrorMessage());
+            }
+
+            var products = _mapper.Map<SaveProductResource, Products>(resource);
+
+            var result = await _productService.UpdateAsync(id, products);
+
+            if(!result.)
+
+        }
 
     }
 }

@@ -35,6 +35,30 @@ namespace PharmaEasy_API.Services
             }
         }
 
+        public async Task<SaveProductsResponse> UpdateAsync(int id, Products products)
+        {
+            var existingProducts = await _productRespository.FindByIdAsync(id);
+            if(existingProducts==null)
+            {
+                return new SaveProductsResponse("Product not foun");
+            }
+            existingProducts.Name = products.Name;
+
+
+            try
+            {
+                _productRespository.Update(existingProducts);
+                await _unitOfWork.CompleteAsync();
+
+                return new SaveProductsResponse(existingProducts);
+            }
+            catch (Exception ex)
+            {
+
+                return new SaveProductsResponse($"An error occurred when updating the products:{ex.Message}");
+            }
+        }
+
         public ProductsService(IProductRespository productRespository, IUnitOfWork unitOfWork)
         {
             _productRespository = productRespository;

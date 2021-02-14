@@ -11,5 +11,9 @@ namespace PharmaEasy_API.Domain.Repositories
         Task<IEnumerable<Products>> RepoListAsync();
 
         Task AddAsync(Products products);
+
+        Task<Products> FindByIdAsync(int id);
+
+        void Update(Products products);
     }
 }

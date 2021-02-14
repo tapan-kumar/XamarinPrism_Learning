@@ -22,5 +22,15 @@ namespace PharmaEasy_API.Persistence.Repositories
         {
             await _context.ProductsSet.AddAsync(products);
         }
+
+        public async Task<Products> FindByIdAsync(int id)
+        {
+            return await _context.ProductsSet.FindAsync(id);
+        }
+
+        public void Update(Products products)
+        {
+            _context.ProductsSet.Update(products);
+        }
     }
 }

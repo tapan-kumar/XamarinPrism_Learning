@@ -31,8 +31,8 @@ namespace PharmaEasy_API.Persistence.Contexts
 
             modelBuilder.Entity<Products>().HasData
                 (
-                new Products { Id=100,Name= "Volini gel", Price=51, Quantity=1, UnitOfMeasurement=EUnitOfMeasurement.Unity},
-                new Products { Id=101, Name="Move gel", Price=98,Quantity=1, UnitOfMeasurement=EUnitOfMeasurement.Unity}
+                new Products { Id=100,Name= "Volini gel", Price=51, Quantity=1 },
+                new Products { Id=101, Name="Move gel", Price=98,Quantity=1}
                 );
         }
     }

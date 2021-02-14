@@ -14,6 +14,6 @@ namespace PharmaEasy_API.Resources
         public string Name { get; set; }
         public short Quantity { get; set; }
         public int Price { get; set; }
-        public EUnitOfMeasurement UnitOfMeasurement { get; set; }
+        //public EUnitOfMeasurement UnitOfMeasurement { get; set; }
     }
 }

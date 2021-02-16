@@ -31,8 +31,10 @@ namespace PharmaEasy_API.Persistence.Contexts
 
             modelBuilder.Entity<Products>().HasData
                 (
-                new Products { Id=100,Name= "Volini gel", Price=51, Quantity=1 },
-                new Products { Id=101, Name="Move gel", Price=98,Quantity=1}
+                new Products { Id=100,Name= "Volini gel", Price=51, Quantity=1, ImageUrl = "https://bit.ly/2MRISz1" },
+                new Products { Id=101, Name = "Revital H", ImageUrl = "https://bit.ly/2NeOuTy", Price=98,Quantity=1}
+                new Products { Id=102, Name = "Set Wet Gel", ImageUrl = "https://bit.ly/3cTQ5Jl", Price=98,Quantity=1}
+                new Products { Id=103, Name = "Cipla HandRub", ImageUrl = "https://bit.ly/3a3t3Oi", Price=98,Quantity=1}
                 );
         }
     }

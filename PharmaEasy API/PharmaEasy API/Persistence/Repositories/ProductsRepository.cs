@@ -32,5 +32,10 @@ namespace PharmaEasy_API.Persistence.Repositories
         {
             _context.ProductsSet.Update(products);
         }
+
+        public void Remove(Products products)
+        {
+            _context.ProductsSet.Remove(products);
+        }
     }
 }

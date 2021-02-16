@@ -19,29 +19,30 @@ namespace PharmaEasy_API.Services
            return await _productRespository.RepoListAsync();
         }
 
-        public async Task<SaveProductsResponse> SaveAsync(Products products)
+        public async Task<ProductsResponse> SaveAsync(Products products)
         {
             try
             {
                 await _productRespository.AddAsync(products);
                 await _unitOfWork.CompleteAsync();
 
-                return new SaveProductsResponse(products);
+                return new ProductsResponse(products);
             }
             catch (Exception ex)
             {
 
-                return new SaveProductsResponse($"An error occurred when saving the products:{ex.Message}");
+                return new ProductsResponse($"An error occurred when saving the products:{ex.Message}");
             }
         }
 
-        public async Task<SaveProductsResponse> UpdateAsync(int id, Products products)
+        public async Task<ProductsResponse> UpdateAsync(int id, Products products)
         {
             var existingProducts = await _productRespository.FindByIdAsync(id);
+
             if(existingProducts==null)
-            {
-                return new SaveProductsResponse("Product not foun");
-            }
+            
+                return new ProductsResponse("Product not found");
+            
             existingProducts.Name = products.Name;
 
 
@@ -50,16 +51,39 @@ namespace PharmaEasy_API.Services
                 _productRespository.Update(existingProducts);
                 await _unitOfWork.CompleteAsync();
 
-                return new SaveProductsResponse(existingProducts);
+                return new ProductsResponse(existingProducts);
             }
             catch (Exception ex)
             {
 
-                return new SaveProductsResponse($"An error occurred when updating the products:{ex.Message}");
+                return new ProductsResponse($"An error occurred while updating the products:{ex.Message}");
+            }
+        }
+
+        public async Task<ProductsResponse> DeleteAsync(int id)
+        {
+            var existingProducts = await _productRespository.FindByIdAsync(id);
+
+            if (existingProducts == null)
+                return new ProductsResponse("product not found");
+
+            try
+            {
+                _productRespository.Remove(existingProducts);
+                await _unitOfWork.CompleteAsync();
+
+                return new ProductsResponse(existingProducts);
+            }
+            catch (Exception ex)
+            {
+
+                return new ProductsResponse($"An error occured when deleting the products{ex.Message}");
             }
         }
 
         public ProductsService(IProductRespository productRespository, IUnitOfWork unitOfWork)
+
+           
         {
             _productRespository = productRespository;
             this._unitOfWork = unitOfWork;

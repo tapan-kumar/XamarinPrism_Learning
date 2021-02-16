@@ -14,7 +14,7 @@ namespace PharmaEasy_API.Controllers
 
     [ApiController]
     [Route("api/[controller]")]
-    public class ProductsController : Controller    
+    public class ProductsController : Controller
     {
         private readonly IProductService _productService;
         private readonly IMapper _mapper;
@@ -31,11 +31,11 @@ namespace PharmaEasy_API.Controllers
             var resources = _mapper.Map<IEnumerable<Products>, IEnumerable<ProductsResource>>(products);
             return resources;
         }
-        
+
         [HttpPost]      ////////////////////////////////////////  Creating new data 
         public async Task<IActionResult> PostAsync([FromBody] SaveProductResource resource)
         {
-           if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState.GetErrorMessage());
             }
@@ -52,11 +52,10 @@ namespace PharmaEasy_API.Controllers
             return Ok(productResource);
         }
 
-        [HttpPut("id")]
-      
-        public async Task<IActionResult> PutAsync(int id,[FromBody] SaveProductResource resource)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAsync( int id, [FromBody] SaveProductResource resource)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState.GetErrorMessage());
             }
@@ -65,10 +64,28 @@ namespace PharmaEasy_API.Controllers
 
             var result = await _productService.UpdateAsync(id, products);
 
-            if(!result.)
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var productResource = _mapper.Map<Products, ProductsResource>(result.Products);
+            return Ok(productResource);
 
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            var result = await _productService.DeleteAsync(id);
+
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var productResource = _mapper.Map<Products, ProductsResource>(result.Products);
+
+            return Ok(productResource);
+        }
+
     }
+
 }
 

@@ -15,5 +15,6 @@ namespace PharmaEasy_API.Domain.Repositories
         Task<Products> FindByIdAsync(int id);
 
         void Update(Products products);
+        void Remove(Products products);
     }
 }
